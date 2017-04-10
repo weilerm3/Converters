@@ -1,3 +1,6 @@
+
+import java.time.LocalTime;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,7 +41,7 @@ public class ConverterGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         WeightLabel = new javax.swing.JLabel();
         WeightTextField = new javax.swing.JTextField();
-        DistanceLabel1 = new javax.swing.JLabel();
+        DistanceLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         SpeedDTextField = new javax.swing.JTextField();
         SpeedTTextField = new javax.swing.JTextField();
@@ -69,7 +72,7 @@ public class ConverterGUI extends javax.swing.JFrame {
 
         WeightLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        DistanceLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DistanceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Weight");
@@ -81,14 +84,39 @@ public class ConverterGUI extends javax.swing.JFrame {
         SpeedLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         CurrencyButton.setText("Convert");
+        CurrencyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CurrencyButtonActionPerformed(evt);
+            }
+        });
 
         TimeButton.setText("Convert");
+        TimeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TimeButtonActionPerformed(evt);
+            }
+        });
 
         DistanceButton.setText("Convert");
+        DistanceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DistanceButtonActionPerformed(evt);
+            }
+        });
 
         WeightButton.setText("Convert");
+        WeightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WeightButtonActionPerformed(evt);
+            }
+        });
 
         SpeedButton.setText("Convert");
+        SpeedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpeedButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,13 +157,10 @@ public class ConverterGUI extends javax.swing.JFrame {
                                 .addComponent(SpeedTTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(DistanceButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DistanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(7, 7, 7)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(114, 114, 114)
-                    .addComponent(DistanceLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(25, 25, 25)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +186,10 @@ public class ConverterGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DistanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DistanceButton)
-                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DistanceButton)
+                    .addComponent(DistanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(WeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,11 +210,6 @@ public class ConverterGUI extends javax.swing.JFrame {
                     .addComponent(SpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SpeedButton))
                 .addContainerGap(52, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(299, Short.MAX_VALUE)
-                    .addComponent(DistanceLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(288, 288, 288)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,6 +225,40 @@ public class ConverterGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CurrencyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CurrencyButtonActionPerformed
+        Converter curr = new Converter();
+        double convert = curr.CurrencyConvert(Double.parseDouble(CurrencyTextField.getText()));
+        String convertString = "" + convert;
+        CurrencyLabel.setText(convertString);
+    }//GEN-LAST:event_CurrencyButtonActionPerformed
+
+    private void TimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeButtonActionPerformed
+        Converter curr = new Converter();
+        LocalTime convert = curr.TimeConvert(TimeTextField.getText());
+        TimeLabel.setText(convert.toString());
+    }//GEN-LAST:event_TimeButtonActionPerformed
+
+    private void DistanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistanceButtonActionPerformed
+        Converter curr = new Converter();
+        double convert = curr.DistanceConvert(Double.parseDouble(DistanceTextField.getText()));
+        String convertString = "" + convert;
+        DistanceLabel.setText(convertString);
+    }//GEN-LAST:event_DistanceButtonActionPerformed
+
+    private void WeightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightButtonActionPerformed
+        Converter curr = new Converter();
+        double convert = curr.WeightConversion(Double.parseDouble(WeightTextField.getText()));
+        String convertString = "" + convert;
+        WeightLabel.setText(convertString);
+    }//GEN-LAST:event_WeightButtonActionPerformed
+
+    private void SpeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeedButtonActionPerformed
+        Converter curr = new Converter();
+        double convert = curr.SpeedConversion(Double.parseDouble(SpeedDTextField.getText()), Double.parseDouble(SpeedTTextField.getText()));
+        String convertString = "" + convert;
+        SpeedLabel.setText(convertString);
+    }//GEN-LAST:event_SpeedButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,7 +300,7 @@ public class ConverterGUI extends javax.swing.JFrame {
     private javax.swing.JLabel CurrencyLabel;
     private javax.swing.JTextField CurrencyTextField;
     private javax.swing.JButton DistanceButton;
-    private javax.swing.JLabel DistanceLabel1;
+    private javax.swing.JLabel DistanceLabel;
     private javax.swing.JTextField DistanceTextField;
     private javax.swing.JButton SpeedButton;
     private javax.swing.JTextField SpeedDTextField;

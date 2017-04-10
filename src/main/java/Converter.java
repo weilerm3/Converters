@@ -17,7 +17,7 @@ public class Converter {
         return 0;
     }
     
-    public LocalTime TimeConvert(LocalTime currTime){
+    public LocalTime TimeConvert(String currTime){
         return null;
     }
     
