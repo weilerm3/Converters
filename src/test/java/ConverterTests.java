@@ -25,7 +25,14 @@ public class ConverterTests {
 
     @Test
     public void CurrencyTest() {
-    
+        System.out.println("CurrencyConvert");
+        double dollars = 5;
+        Converter instance = new Converter();
+        double expResult = 34.45;
+        double result = instance.CurrencyConvert(dollars);
+        System.out.println("Expected Result: " + expResult);
+        System.out.printf("Result: %.2f\n", result);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -35,21 +42,23 @@ public class ConverterTests {
     
     @Test
     public void DistanceTest() {
-    
+        System.out.println("\nDistanceConvert");
+        double miles = 5;
+        Converter instance = new Converter();
+        double expResult = 8.0467;
+        double result = instance.DistanceConvert(miles);
+        System.out.println("Expected Result: " + expResult);
+        System.out.printf("Result: %.4f\n", result);
+        assertEquals(expResult, result);
     }
     
     @Test
     public void WeightTest() {
-        double expected = 22.6796;
-        double result = con.WeightConversion(50);
-        assertEquals(expected, result);
-        
+    
     }
     
     @Test
     public void SpeedTest() {
-        double expected = 72.4205;
-        double result = con.SpeedConversion(45);
-        assertEquals(expected, result);
+    
     }
 }
