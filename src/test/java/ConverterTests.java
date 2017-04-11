@@ -17,7 +17,10 @@ import static org.junit.Assert.*;
  */
 public class ConverterTests {
     
+    Converter con;
+    
     public ConverterTests() {
+        con = new Converter();
     }
 
     @Test
