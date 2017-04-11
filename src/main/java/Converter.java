@@ -14,7 +14,8 @@ import java.time.*;
 public class Converter {
     
     public double CurrencyConvert(double dollars){
-        return 0;
+        double yuan = dollars*6.89;
+        return yuan;
     }
     
     public LocalTime TimeConvert(String currTime){
@@ -22,7 +23,8 @@ public class Converter {
     }
     
     public double DistanceConvert(double miles){
-        return 0;
+        double kilometers = miles*1.60934;
+        return kilometers;
     }
     
     public double WeightConversion(double pounds){
