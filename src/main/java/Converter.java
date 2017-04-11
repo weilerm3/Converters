@@ -26,10 +26,14 @@ public class Converter {
     }
     
     public double WeightConversion(double pounds){
-        return 0;
+        double kilo;
+        kilo = 0.453592 * pounds;
+        return kilo;
     }
     
     public double SpeedConversion(double miles, double hours){
-        return 0;
+        double kilometer;
+        kilometer = 1.60934 * miles;
+        return kilometer/hours;
     }
 }
