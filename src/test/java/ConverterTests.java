@@ -54,11 +54,15 @@ public class ConverterTests {
     
     @Test
     public void WeightTest() {
-    
+        double expected = 22.6796;
+        double result = con.WeightConversion(50);
+        assertEquals(expected, result);
     }
     
     @Test
     public void SpeedTest() {
-    
+        double expected = 72.4205;
+        double result = con.SpeedConversion(45);
+        assertEquals(expected, result);
     }
 }
